@@ -3,6 +3,23 @@ import { useWindowWidth } from "../hooks/useWindowWidth";
 import { useLanguage } from "../context/LanguageContext";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// flex-basis % resolves against the container's CONTENT width (clientWidth minus padding).
+// With paddingLeft=P% and paddingRight=P%, content width = W*(1-2P).
+// So actual slide width = W*(1-2P)*flexBasis.
+// Correct scrollLeft to centre slide i:
+//   left_i = paddingLeft + i*(slideW+gap) + slideW/2 - W/2
+//          = i*(slideW+gap) - ((W-slideW)/2 - paddingLeft)
+//          = i*(slideW+gap) - centerOffset
+function computeCarouselMetrics(el: HTMLDivElement, isMobile: boolean) {
+  const W = el.clientWidth;
+  const paddingPct = isMobile ? 0.06 : 0.14;
+  const flexBasis  = isMobile ? 0.88 : 0.72;
+  const slideW     = W * (1 - 2 * paddingPct) * flexBasis;
+  const gap        = 12;
+  const centerOffset = (W - slideW) / 2 - W * paddingPct;
+  return { slideW, gap, centerOffset };
+}
+
 const IMAGE_SRCS = [
   { src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=1100&fit=crop&auto=format", alt: "EmberCut Restaurant — elegant dining room" },
   { src: "https://images.unsplash.com/photo-1759382904778-6994716b1aa1?w=800&h=540&fit=crop&auto=format", alt: "Steaks cooking over open flames on a charcoal grill" },
@@ -16,6 +33,7 @@ export function Gallery() {
   const [lightbox, setLightbox] = useState<number | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isScrolling = useRef(false);
   const width = useWindowWidth();
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
@@ -27,17 +45,21 @@ export function Gallery() {
   const scrollToSlide = useCallback((index: number) => {
     const el = scrollRef.current;
     if (!el) return;
-    const slideWidth = el.clientWidth * (isMobile ? 0.88 : 0.72) + 12;
-    el.scrollTo({ left: index * slideWidth, behavior: "smooth" });
+    const { slideW, gap, centerOffset } = computeCarouselMetrics(el, isMobile);
+    const left = Math.max(0, index * (slideW + gap) - centerOffset);
+    isScrolling.current = true;
+    el.scrollTo({ left, behavior: "smooth" });
     setActiveSlide(index);
+    setTimeout(() => { isScrolling.current = false; }, 600);
   }, [isMobile]);
 
   const handleScroll = useCallback(() => {
+    if (isScrolling.current) return;
     const el = scrollRef.current;
     if (!el) return;
-    const slideWidth = el.clientWidth * (isMobile ? 0.88 : 0.72) + 12;
-    const index = Math.round(el.scrollLeft / slideWidth);
-    setActiveSlide(Math.min(index, IMAGE_SRCS.length - 1));
+    const { slideW, gap, centerOffset } = computeCarouselMetrics(el, isMobile);
+    const index = Math.round((el.scrollLeft + centerOffset) / (slideW + gap));
+    setActiveSlide(Math.min(Math.max(index, 0), IMAGE_SRCS.length - 1));
   }, [isMobile]);
 
   const prev = () => scrollToSlide(Math.max(activeSlide - 1, 0));
