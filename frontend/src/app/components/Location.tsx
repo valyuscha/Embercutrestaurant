@@ -56,18 +56,32 @@ export function Location() {
             </a>
           </div>
 
-          {/* Google Maps embed */}
+          {/* Restaurant photo with address overlay */}
           <div style={{ position: "relative", minHeight: isMobile ? 280 : 460, overflow: "hidden" }}>
-            <iframe
-              src="https://maps.google.com/maps?q=Świętego+Krzyża+17,+31-023+Kraków,+Poland&output=embed&hl=pl&z=16"
-              title="EmberCut Restaurant – Mapa lokalizacji"
-              width="100%"
-              height={isMobile ? 280 : 460}
-              style={{ border: 0, display: "block" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+            <img
+              src="https://images.pexels.com/photos/32804621/pexels-photo-32804621.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              alt="EmberCut Restaurant — wejście, Świętego Krzyża 17, Kraków"
+              style={{ width: "100%", height: "100%", objectFit: "cover", minHeight: isMobile ? 280 : 460, display: "block" }}
             />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.12) 100%)",
+              display: "flex", alignItems: "flex-end", justifyContent: "center", paddingBottom: 36,
+            }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{
+                  width: 44, height: 44, border: "2px solid #c9923f", borderRadius: "50%",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  margin: "0 auto 12px", background: "rgba(0,0,0,0.5)",
+                }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#c9923f">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </div>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(20px, 3vw, 28px)", color: "#ffffff", textShadow: "0 2px 12px rgba(0,0,0,0.9)", marginBottom: 6 }}>Świętego Krzyża 17</p>
+                <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "12px", letterSpacing: "0.32em", color: "#c9923f", textShadow: "0 2px 8px rgba(0,0,0,1)", textTransform: "uppercase" }}>Kraków, Polska</p>
+              </div>
+            </div>
             <div style={{ position: "absolute", top: 0, right: 0, width: 28, height: 28, borderTop: "2px solid #c9923f", borderRight: "2px solid #c9923f", pointerEvents: "none" }} />
             <div style={{ position: "absolute", bottom: 0, left: 0, width: 28, height: 28, borderBottom: "2px solid #c9923f", borderLeft: "2px solid #c9923f", pointerEvents: "none" }} />
           </div>

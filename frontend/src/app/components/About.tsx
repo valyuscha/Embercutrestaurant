@@ -1,20 +1,17 @@
-import { useWindowWidth } from "../hooks/useWindowWidth";
 import { useLanguage } from "../context/LanguageContext";
 
 export function About() {
-  const width = useWindowWidth();
-  const isMobile = width < 768;
   const { t } = useLanguage();
   const a = t.about;
 
   return (
     <section id="about" className="py-16 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 items-center">
 
           {/* Image column */}
           <div className="relative">
-            <div className="relative overflow-hidden" style={{ aspectRatio: "4/5" }}>
+            <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
               <img
                 src="https://images.unsplash.com/photo-1560130934-590b85fc08e7?w=800&h=1000&fit=crop&auto=format"
                 alt="EmberCut Restaurant — intimate dining corner with warm atmosphere"
@@ -23,18 +20,18 @@ export function About() {
             </div>
             <div style={{
               position: "absolute",
-              bottom: isMobile ? 0 : -24,
-              right: isMobile ? 0 : -24,
-              width: 144, height: 144,
+              bottom: 0,
+              right: 0,
+              width: 108, height: 108,
               background: "var(--primary)",
               display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
               textAlign: "center", gap: 2,
             }}>
-              <span style={{ fontFamily: "'Lato', sans-serif", fontSize: "10px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--primary-foreground)" }}>{a.sinceLabel}</span>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "46px", fontWeight: 400, lineHeight: 1, color: "var(--primary-foreground)" }}>25+</span>
-              <span style={{ fontFamily: "'Lato', sans-serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--primary-foreground)" }}>{a.sinceYears}</span>
+              <span style={{ fontFamily: "'Lato', sans-serif", fontSize: "9px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--primary-foreground)" }}>{a.sinceLabel}</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "34px", fontWeight: 400, lineHeight: 1, color: "var(--primary-foreground)" }}>25+</span>
+              <span style={{ fontFamily: "'Lato', sans-serif", fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--primary-foreground)" }}>{a.sinceYears}</span>
             </div>
-            <div style={{ position: "absolute", top: -12, left: -12, width: 48, height: 48, borderTop: "2px solid var(--primary)", borderLeft: "2px solid var(--primary)" }} />
+            <div style={{ position: "absolute", top: -12, left: -12, width: 40, height: 40, borderTop: "2px solid var(--primary)", borderLeft: "2px solid var(--primary)" }} />
           </div>
 
           {/* Text column */}

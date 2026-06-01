@@ -18,7 +18,8 @@ Running the EmberCut Restaurant landing page from the GitHub repository `valyusc
 - Created minimal FastAPI backend server
 - Installed all dependencies with Yarn
 - Both frontend (port 3000) and backend (port 8001) running via supervisor
-- **[2026-02]** Fixed adaptive layout 768–956px: nav breakpoint raised to `< 960` (hamburger now shown below 960px)
+- **[2026-02]** About section: fixed responsive layout — changed `lg:grid-cols-2` → `sm:grid-cols-2` so image+text are side by side from 640px+; reduced image aspect from 4/5 → 3/4 and badge from 144→108px
+- **[2026-02]** Location section: replaced Google Maps iframe with atmospheric restaurant exterior photo (cobblestone street at night) + address overlay (Świętego Krzyża 17 · KRAKÓW, POLSKA)
 - **[2026-02]** Replaced broken placeholder image in Location section with live Google Maps iframe (Świętego Krzyża 17)
 - **[2026-02]** Updated all real restaurant data across all 3 languages (PL/EN/DE):
   - Address: Świętego Krzyża 17, 31-023 Kraków
