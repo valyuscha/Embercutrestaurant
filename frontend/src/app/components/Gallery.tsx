@@ -150,12 +150,12 @@ export function Gallery() {
                   onClick={() => scrollToSlide(i)}
                   aria-label={`Slide ${i + 1}`}
                   style={{
-                    width: activeSlide === i ? 24 : 8,
+                    width: 8,
                     height: 8,
                     background: activeSlide === i ? "var(--primary)" : "var(--border)",
                     border: "none", cursor: "pointer",
-                    borderRadius: activeSlide === i ? 4 : "50%",
-                    transition: "all 0.3s ease",
+                    borderRadius: "50%",
+                    transition: "background 0.3s ease",
                     padding: 0,
                   }}
                 />
