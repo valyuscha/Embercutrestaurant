@@ -32,7 +32,7 @@ export function FullMenu() {
           {fm.back}
         </Link>
         <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "11px", letterSpacing: "0.4em", textTransform: "uppercase", color: "var(--primary)", marginBottom: 14 }}>
-          EmberCut Restaurant · ul. Krzywa 17, Kraków
+          EmberCut Restaurant · Świętego Krzyża 17, Kraków
         </p>
         <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(38px, 6vw, 68px)", fontWeight: 400, color: "var(--foreground)", lineHeight: 1.1, marginBottom: 20 }}>
           {fm.heading}
@@ -112,7 +112,7 @@ export function FullMenu() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginTop: 24 }}>
             <div style={{ width: 48, height: 1, background: "var(--primary)", opacity: 0.4 }} />
             <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--primary)" }}>
-              EmberCut Restaurant · ul. Krzywa 17 · Kraków
+              EmberCut Restaurant · Świętego Krzyża 17 · Kraków
             </p>
             <div style={{ width: 48, height: 1, background: "var(--primary)", opacity: 0.4 }} />
           </div>

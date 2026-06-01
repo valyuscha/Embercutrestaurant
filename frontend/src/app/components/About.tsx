@@ -7,7 +7,7 @@ export function About() {
   return (
     <section id="about" className="py-16 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-start">
 
           {/* Image column */}
           <div className="relative">
@@ -45,10 +45,10 @@ export function About() {
             </h2>
             <div style={{ width: 64, height: 1, background: "var(--primary)", opacity: 0.65, marginBottom: 28 }} />
 
-            <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "19px", lineHeight: 1.85, color: "var(--foreground)", marginBottom: 20 }}>
+            <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "clamp(15px, 1.5vw, 19px)", lineHeight: 1.85, color: "var(--foreground)", marginBottom: 18 }}>
               {a.p1}
             </p>
-            <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "18px", lineHeight: 1.85, color: "var(--muted-foreground)", marginBottom: 36 }}>
+            <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "clamp(14px, 1.4vw, 17px)", lineHeight: 1.85, color: "var(--muted-foreground)", marginBottom: 32 }}>
               {a.p2}
             </p>
 

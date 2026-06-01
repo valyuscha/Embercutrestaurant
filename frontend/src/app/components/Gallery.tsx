@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import { useLanguage } from "../context/LanguageContext";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const IMAGE_SRCS = [
   { src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=1100&fit=crop&auto=format", alt: "EmberCut Restaurant — elegant dining room" },
@@ -13,12 +14,34 @@ const IMAGE_SRCS = [
 
 export function Gallery() {
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const width = useWindowWidth();
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
+  const isCarousel = isMobile || isTablet;
   const { t } = useLanguage();
   const g = t.gallery;
   const captions = g.captions as unknown as string[];
+
+  const scrollToSlide = useCallback((index: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const slideWidth = el.clientWidth * (isMobile ? 0.88 : 0.72) + 12;
+    el.scrollTo({ left: index * slideWidth, behavior: "smooth" });
+    setActiveSlide(index);
+  }, [isMobile]);
+
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const slideWidth = el.clientWidth * (isMobile ? 0.88 : 0.72) + 12;
+    const index = Math.round(el.scrollLeft / slideWidth);
+    setActiveSlide(Math.min(index, IMAGE_SRCS.length - 1));
+  }, [isMobile]);
+
+  const prev = () => scrollToSlide(Math.max(activeSlide - 1, 0));
+  const next = () => scrollToSlide(Math.min(activeSlide + 1, IMAGE_SRCS.length - 1));
 
   return (
     <section id="gallery" className="py-16 px-6 bg-background">
@@ -33,40 +56,149 @@ export function Gallery() {
           </h2>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(3, 1fr)", gridTemplateRows: "auto", gap: 10 }}>
-          {IMAGE_SRCS.map((img, i) => (
-            <div
-              key={i}
-              style={{
-                gridRow: (!isMobile && i === 0) ? "span 2" : "span 1",
-                position: "relative", overflow: "hidden", cursor: "pointer",
-                aspectRatio: (isMobile || i !== 0) ? "4/3" : undefined,
-                minHeight: (!isMobile && i === 0) ? 400 : undefined,
-              }}
-              className="group"
-              onClick={() => setLightbox(i)}
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.7s ease", display: "block" }}
-                className="group-hover:scale-105"
-              />
-              <div style={{
-                position: "absolute", inset: 0,
-                background: "linear-gradient(to top, rgba(17,13,7,0.78) 0%, transparent 55%)",
-                opacity: 0, transition: "opacity 0.3s",
-                display: "flex", alignItems: "flex-end", padding: 20,
-              }}
-                className="group-hover:opacity-100"
+        {isCarousel ? (
+          /* ── Carousel (mobile + tablet) ── */
+          <div style={{ position: "relative" }}>
+            {/* Arrows */}
+            {activeSlide > 0 && (
+              <button
+                onClick={prev}
+                aria-label="Previous"
+                style={{
+                  position: "absolute", left: isMobile ? 4 : 12, top: "50%", transform: "translateY(-50%)",
+                  zIndex: 10, width: 40, height: 40, borderRadius: "50%",
+                  background: "rgba(17,13,7,0.72)", border: "1px solid rgba(201,146,63,0.4)",
+                  color: "#c9923f", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+                  backdropFilter: "blur(4px)", transition: "background 0.2s",
+                }}
               >
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "17px", fontStyle: "italic", color: "#f2e6cc" }}>
-                  {captions[i]}
-                </span>
-              </div>
+                <ChevronLeft size={20} />
+              </button>
+            )}
+            {activeSlide < IMAGE_SRCS.length - 1 && (
+              <button
+                onClick={next}
+                aria-label="Next"
+                style={{
+                  position: "absolute", right: isMobile ? 4 : 12, top: "50%", transform: "translateY(-50%)",
+                  zIndex: 10, width: 40, height: 40, borderRadius: "50%",
+                  background: "rgba(17,13,7,0.72)", border: "1px solid rgba(201,146,63,0.4)",
+                  color: "#c9923f", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+                  backdropFilter: "blur(4px)", transition: "background 0.2s",
+                }}
+              >
+                <ChevronRight size={20} />
+              </button>
+            )}
+
+            {/* Scroll container */}
+            <div
+              ref={scrollRef}
+              onScroll={handleScroll}
+              style={{
+                display: "flex",
+                overflowX: "auto",
+                scrollSnapType: "x mandatory",
+                gap: 12,
+                scrollBehavior: "smooth",
+                WebkitOverflowScrolling: "touch",
+                msOverflowStyle: "none",
+                scrollbarWidth: "none",
+                paddingLeft: isMobile ? "6%" : "14%",
+                paddingRight: isMobile ? "6%" : "14%",
+              }}
+            >
+              {IMAGE_SRCS.map((img, i) => (
+                <div
+                  key={i}
+                  onClick={() => setLightbox(i)}
+                  style={{
+                    flex: `0 0 ${isMobile ? "88%" : "72%"}`,
+                    scrollSnapAlign: "center",
+                    position: "relative",
+                    overflow: "hidden",
+                    aspectRatio: "4/3",
+                    cursor: "pointer",
+                    transition: "transform 0.3s ease, opacity 0.3s ease",
+                    transform: activeSlide === i ? "scale(1)" : "scale(0.96)",
+                    opacity: activeSlide === i ? 1 : 0.7,
+                  }}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  />
+                  <div style={{
+                    position: "absolute", inset: 0,
+                    background: "linear-gradient(to top, rgba(17,13,7,0.75) 0%, transparent 55%)",
+                    display: "flex", alignItems: "flex-end", padding: 20,
+                  }}>
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "17px", fontStyle: "italic", color: "#f2e6cc" }}>
+                      {captions[i]}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+
+            {/* Dots */}
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 8, marginTop: 24 }}>
+              {IMAGE_SRCS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => scrollToSlide(i)}
+                  aria-label={`Slide ${i + 1}`}
+                  style={{
+                    width: activeSlide === i ? 24 : 8,
+                    height: 8,
+                    background: activeSlide === i ? "var(--primary)" : "var(--border)",
+                    border: "none", cursor: "pointer",
+                    borderRadius: activeSlide === i ? 4 : "50%",
+                    transition: "all 0.3s ease",
+                    padding: 0,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          /* ── Masonry grid (desktop) ── */
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "auto", gap: 10 }}>
+            {IMAGE_SRCS.map((img, i) => (
+              <div
+                key={i}
+                style={{
+                  gridRow: i === 0 ? "span 2" : "span 1",
+                  position: "relative", overflow: "hidden", cursor: "pointer",
+                  aspectRatio: i !== 0 ? "4/3" : undefined,
+                  minHeight: i === 0 ? 400 : undefined,
+                }}
+                className="group"
+                onClick={() => setLightbox(i)}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.7s ease", display: "block" }}
+                  className="group-hover:scale-105"
+                />
+                <div style={{
+                  position: "absolute", inset: 0,
+                  background: "linear-gradient(to top, rgba(17,13,7,0.78) 0%, transparent 55%)",
+                  opacity: 0, transition: "opacity 0.3s",
+                  display: "flex", alignItems: "flex-end", padding: 20,
+                }}
+                  className="group-hover:opacity-100"
+                >
+                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "17px", fontStyle: "italic", color: "#f2e6cc" }}>
+                    {captions[i]}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Lightbox */}
@@ -92,7 +224,12 @@ export function Gallery() {
         </div>
       )}
 
-      <style>{`.group:hover img { transform: scale(1.05); } .group-hover\\:opacity-100:is(.group:hover *) { opacity: 1 !important; } .group-hover\\:scale-105:is(.group:hover *) { transform: scale(1.05); }`}</style>
+      <style>{`
+        .group:hover img { transform: scale(1.05); }
+        .group-hover\\:opacity-100:is(.group:hover *) { opacity: 1 !important; }
+        .group-hover\\:scale-105:is(.group:hover *) { transform: scale(1.05); }
+        div::-webkit-scrollbar { display: none; }
+      `}</style>
     </section>
   );
 }
