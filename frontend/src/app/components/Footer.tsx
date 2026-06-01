@@ -37,7 +37,7 @@ export function Footer() {
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {[
                 { text: "Świętego Krzyża 17, 31-023 Kraków", href: null },
-                { text: "+48 511 191 368", href: "tel:+48511191368" },
+                { text: "+48 800 083 446", href: "tel:+48800083446" },
               ].map((c) =>
                 c.href ? (
                   <a key={c.text} href={c.href} style={{ fontFamily: "'Lato', sans-serif", fontSize: "17px", color: "var(--muted-foreground)", textDecoration: "none", transition: "color 0.18s ease" }}

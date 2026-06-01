@@ -85,7 +85,7 @@ export const translations = {
       blocks: [
         { label: "Adres", lines: ["Świętego Krzyża 17", "31-023 Kraków"] },
         { label: "Godziny otwarcia", lines: ["Pon – Czw: 14:00 – 22:00", "Pt: 14:00 – 00:00", "Sob: 14:00 – 00:00", "Nd: 14:00 – 22:00"] },
-        { label: "Telefon", lines: ["+48 511 191 368"] },
+        { label: "Telefon", lines: ["+48 800 083 446"] },
       ],
       mapsBtn: "Otwórz w Mapach →",
     },
@@ -273,7 +273,7 @@ export const translations = {
       blocks: [
         { label: "Address", lines: ["Świętego Krzyża 17", "31-023 Kraków, Poland"] },
         { label: "Opening hours", lines: ["Mon – Thu: 14:00 – 22:00", "Fri: 14:00 – 00:00", "Sat: 14:00 – 00:00", "Sun: 14:00 – 22:00"] },
-        { label: "Phone", lines: ["+48 511 191 368"] },
+        { label: "Phone", lines: ["+48 800 083 446"] },
       ],
       mapsBtn: "Open in Maps →",
     },
@@ -461,7 +461,7 @@ export const translations = {
       blocks: [
         { label: "Adresse", lines: ["Świętego Krzyża 17", "31-023 Krakau, Polen"] },
         { label: "Öffnungszeiten", lines: ["Mo – Do: 14:00 – 22:00", "Fr: 14:00 – 00:00", "Sa: 14:00 – 00:00", "So: 14:00 – 22:00"] },
-        { label: "Telefon", lines: ["+48 511 191 368"] },
+        { label: "Telefon", lines: ["+48 800 083 446"] },
       ],
       mapsBtn: "In Maps öffnen →",
     },

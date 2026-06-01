@@ -268,7 +268,7 @@ export function Reservation() {
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
                 {[
-                  { label: r.infoLabels.phone, value: "+48 511 191 368", href: "tel:+48511191368" },
+                  { label: r.infoLabels.phone, value: "+48 800 083 446", href: "tel:+48800083446" },
                   { label: r.infoLabels.address, value: "Świętego Krzyża 17, 31-023 Kraków", href: "#location" },
                   { label: r.infoLabels.hours, value: r.hours, href: null },
                 ].map((c) => (
