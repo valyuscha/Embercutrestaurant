@@ -26,7 +26,7 @@ export function Nav() {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const hasHero = isHome;
-  const isMobile = useWindowWidth() < 768;
+  const isMobile = useWindowWidth() < 960;
   const { t, lang, setLang } = useLanguage();
 
   const NAV_LINKS = [

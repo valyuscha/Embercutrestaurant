@@ -1,4 +1,3 @@
-import locationImg from "../../imports/image-11.png";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -41,7 +40,7 @@ export function Location() {
             </div>
 
             <a
-              href="https://maps.google.com/?q=ul.+Krzywa+17,+31-022+Kraków"
+              href="https://maps.google.com/?q=Świętego+Krzyża+17,+31-023+Kraków"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -57,24 +56,20 @@ export function Location() {
             </a>
           </div>
 
-          {/* Map photo */}
-          <div style={{ position: "relative", minHeight: isMobile ? 250 : 420, overflow: "hidden" }}>
-            <img
-              src={locationImg}
-              alt="EmberCut Restaurant location — Kraków city view"
-              style={{ width: "100%", height: "100%", objectFit: "cover", minHeight: isMobile ? 250 : 420, display: "block" }}
+          {/* Google Maps embed */}
+          <div style={{ position: "relative", minHeight: isMobile ? 280 : 460, overflow: "hidden" }}>
+            <iframe
+              src="https://maps.google.com/maps?q=Świętego+Krzyża+17,+31-023+Kraków,+Poland&output=embed&hl=pl&z=16"
+              title="EmberCut Restaurant – Mapa lokalizacji"
+              width="100%"
+              height={isMobile ? 280 : 460}
+              style={{ border: 0, display: "block" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.18) 100%)", display: "flex", alignItems: "flex-end", justifyContent: "center", paddingBottom: 36 }}>
-              <div style={{ textAlign: "center" }}>
-                <div style={{ width: 52, height: 52, border: "2px solid #c9923f", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", fontSize: "22px", background: "rgba(0,0,0,0.5)" }}>
-                  📍
-                </div>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "26px", color: "#ffffff", textShadow: "0 2px 12px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,1)", marginBottom: 4 }}>ul. Krzywa 17</p>
-                <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "13px", letterSpacing: "0.28em", color: "#c9923f", textShadow: "0 2px 8px rgba(0,0,0,1)", textTransform: "uppercase" }}>Kraków</p>
-              </div>
-            </div>
-            <div style={{ position: "absolute", top: 0, right: 0, width: 28, height: 28, borderTop: "2px solid #c9923f", borderRight: "2px solid #c9923f" }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, width: 28, height: 28, borderBottom: "2px solid #c9923f", borderLeft: "2px solid #c9923f" }} />
+            <div style={{ position: "absolute", top: 0, right: 0, width: 28, height: 28, borderTop: "2px solid #c9923f", borderRight: "2px solid #c9923f", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", bottom: 0, left: 0, width: 28, height: 28, borderBottom: "2px solid #c9923f", borderLeft: "2px solid #c9923f", pointerEvents: "none" }} />
           </div>
 
         </div>

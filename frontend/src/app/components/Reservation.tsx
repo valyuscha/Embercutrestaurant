@@ -43,9 +43,8 @@ function ConfirmModal({ onConfirm, onCancel, modal }: {
 const MIN_DINING: Record<Variant, number> = { personal: 90, business: 120 };
 
 function scheduleForDay(dow: number): { open: number; close: number } {
-  if (dow === 0) return { open: 12, close: 21 };
-  if (dow >= 1 && dow <= 4) return { open: 12, close: 22 };
-  return { open: 12, close: 23 };
+  if (dow === 5 || dow === 6) return { open: 14, close: 24 }; // Fri–Sat 14:00–00:00
+  return { open: 14, close: 22 }; // Mon–Thu, Sun 14:00–22:00
 }
 
 function getTimesForDate(dateStr: string, variant: Variant): string[] {
@@ -269,8 +268,8 @@ export function Reservation() {
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
                 {[
-                  { label: r.infoLabels.phone, value: "+48 800 931 311", href: "tel:+48800931311" },
-                  { label: r.infoLabels.address, value: "ul. Krzywa 17, 31-022 Kraków", href: "#location" },
+                  { label: r.infoLabels.phone, value: "+48 511 191 368", href: "tel:+48511191368" },
+                  { label: r.infoLabels.address, value: "Świętego Krzyża 17, 31-023 Kraków", href: "#location" },
                   { label: r.infoLabels.hours, value: r.hours, href: null },
                 ].map((c) => (
                   <div key={c.label} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>

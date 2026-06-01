@@ -18,6 +18,15 @@ Running the EmberCut Restaurant landing page from the GitHub repository `valyusc
 - Created minimal FastAPI backend server
 - Installed all dependencies with Yarn
 - Both frontend (port 3000) and backend (port 8001) running via supervisor
+- **[2026-02]** Fixed adaptive layout 768–956px: nav breakpoint raised to `< 960` (hamburger now shown below 960px)
+- **[2026-02]** Replaced broken placeholder image in Location section with live Google Maps iframe (Świętego Krzyża 17)
+- **[2026-02]** Updated all real restaurant data across all 3 languages (PL/EN/DE):
+  - Address: Świętego Krzyża 17, 31-023 Kraków
+  - Phone: +48 511 191 368
+  - Hours: Mon–Thu & Sun 14:00–22:00 | Fri–Sat 14:00–00:00
+- **[2026-02]** Updated hardcoded values in Footer, Reservation, and Location components
+- **[2026-02]** Updated reservation time slots to reflect real open hours (14:00 start)
+- **[2026-02]** SEO title: "EmberCut Restaurant Kraków | Premium Steakhouse"
 
 ## Key Features of the Landing Page
 - **Hero section**: Fullscreen background with "Ember Cut" branding
@@ -33,6 +42,5 @@ Running the EmberCut Restaurant landing page from the GitHub repository `valyusc
 - React & React-DOM added as regular dependencies (were peerDependencies in original repo)
 
 ## Backlog / Next Steps
-- Add EmailJS integration for the reservation form
-- Connect form submissions to backend
-- Add Google Maps embed for Location section
+- Reservation form backend with Resend email confirmations (user chose Resend, deferred)
+- Admin panel to view/manage reservations
