@@ -1,4 +1,4 @@
-import locationImg from "../../imports/image-11.png";
+import locationImg from "../../imports/location.jpeg";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -41,7 +41,7 @@ export function Location() {
             </div>
 
             <a
-              href="https://maps.google.com/?q=ul.+Krzywa+17,+31-022+Kraków"
+              href="https://maps.google.com/?q=ul.+Krzyża+17,+31-022+Kraków"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -69,7 +69,7 @@ export function Location() {
                 <div style={{ width: 52, height: 52, border: "2px solid #c9923f", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", fontSize: "22px", background: "rgba(0,0,0,0.5)" }}>
                   📍
                 </div>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "26px", color: "#ffffff", textShadow: "0 2px 12px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,1)", marginBottom: 4 }}>ul. Krzywa 17</p>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "26px", color: "#ffffff", textShadow: "0 2px 12px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,1)", marginBottom: 4 }}>ul. Krzyża 17</p>
                 <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "13px", letterSpacing: "0.28em", color: "#c9923f", textShadow: "0 2px 8px rgba(0,0,0,1)", textTransform: "uppercase" }}>Kraków</p>
               </div>
             </div>

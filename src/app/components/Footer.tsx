@@ -36,7 +36,7 @@ export function Footer() {
             <p style={{ fontFamily: "'Lato', sans-serif", fontSize: "10px", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--primary)", marginBottom: 20 }}>{f.contactHeading}</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {[
-                { text: "ul. Krzywa 17, 31-022 Kraków", href: null },
+                { text: "ul. Krzyża 17, 31-022 Kraków", href: null },
                 { text: "+48 800 931 311", href: "tel:+48800931311" },
               ].map((c) =>
                 c.href ? (

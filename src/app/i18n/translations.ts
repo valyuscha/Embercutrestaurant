@@ -9,7 +9,7 @@ export const translations = {
       reservation: "Rezerwacja",
     },
     hero: {
-      tagline: "Premium Steakhouse · ul. Krzywa 17, Kraków",
+      tagline: "Premium Steakhouse · ul. Krzyża 17, Kraków",
       subtitle: "Wyjątkowe cięcia premium, grill węglowy i sztuka ognia — doświadczenie smaku na najwyższym poziomie.",
       bookTable: "Zarezerwuj Stolik",
       seeMenu: "Karta Dań",
@@ -83,7 +83,7 @@ export const translations = {
       heading: "Jesteśmy w samym",
       headingEm: "sercu Krakowa",
       blocks: [
-        { label: "Adres", lines: ["ul. Krzywa 17", "31-022 Kraków"] },
+        { label: "Adres", lines: ["ul. Krzyża 17", "31-022 Kraków"] },
         { label: "Godziny otwarcia", lines: ["Pon – Wt: 14:00 – 22:00", "Śr – Cz: 14:00 – 23:00", "Pt: 12:00 – 00:00 · Sob: 14:00 – 01:00", "Nd: 13:00 – 22:00"] },
         { label: "Telefon", lines: ["+48 800 931 311"] },
       ],
@@ -161,7 +161,7 @@ export const translations = {
       links: [["O Nas", "#about"], ["Karta Dań", "#menu"], ["Galeria", "#gallery"], ["Oferta", "#offers"], ["Rezerwacja", "#reservation"], ["Lokalizacja", "#location"]] as [string, string][],
       contactHeading: "Kontakt",
       copyright: "© 2025 EmberCut Restaurant. Wszelkie prawa zastrzeżone.",
-      location: "ul. Krzywa 17 · Kraków · Polska",
+      location: "ul. Krzyża 17 · Kraków · Polska",
     },
     datepicker: {
       months: ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"],
@@ -197,7 +197,7 @@ export const translations = {
       reservation: "Reservation",
     },
     hero: {
-      tagline: "Premium Steakhouse · ul. Krzywa 17, Kraków",
+      tagline: "Premium Steakhouse · ul. Krzyża 17, Kraków",
       subtitle: "Exceptional premium cuts, charcoal grill mastery and the art of fire — a dining experience at the highest level.",
       bookTable: "Book a Table",
       seeMenu: "Our Menu",
@@ -271,7 +271,7 @@ export const translations = {
       heading: "We are right in the",
       headingEm: "heart of Kraków",
       blocks: [
-        { label: "Address", lines: ["ul. Krzywa 17", "31-022 Kraków, Poland"] },
+        { label: "Address", lines: ["ul. Krzyża 17", "31-022 Kraków, Poland"] },
         { label: "Opening hours", lines: ["Mon – Tue: 14:00 – 22:00", "Wed – Thu: 14:00 – 23:00", "Fri: 12:00 – 00:00 · Sat: 14:00 – 01:00", "Sun: 13:00 – 22:00"] },
         { label: "Phone", lines: ["+48 800 931 311"] },
       ],
@@ -349,7 +349,7 @@ export const translations = {
       links: [["About Us", "#about"], ["Menu", "#menu"], ["Gallery", "#gallery"], ["Offers", "#offers"], ["Reservation", "#reservation"], ["Location", "#location"]] as [string, string][],
       contactHeading: "Contact",
       copyright: "© 2025 EmberCut Restaurant. All rights reserved.",
-      location: "ul. Krzywa 17 · Kraków · Poland",
+      location: "ul. Krzyża 17 · Kraków · Poland",
     },
     datepicker: {
       months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -385,7 +385,7 @@ export const translations = {
       reservation: "Reservierung",
     },
     hero: {
-      tagline: "Premium Steakhouse · ul. Krzywa 17, Krakau",
+      tagline: "Premium Steakhouse · ul. Krzyża 17, Krakau",
       subtitle: "Außergewöhnliche Premium-Cuts, Holzkohlegrill-Meisterschaft und die Kunst des Feuers — ein Restauranterlebnis auf höchstem Niveau.",
       bookTable: "Tisch reservieren",
       seeMenu: "Speisekarte",
@@ -459,7 +459,7 @@ export const translations = {
       heading: "Wir liegen direkt im",
       headingEm: "Herzen von Krakau",
       blocks: [
-        { label: "Adresse", lines: ["ul. Krzywa 17", "31-022 Krakau, Polen"] },
+        { label: "Adresse", lines: ["ul. Krzyża 17", "31-022 Krakau, Polen"] },
         { label: "Öffnungszeiten", lines: ["Mo – Di: 14:00 – 22:00", "Mi – Do: 14:00 – 23:00", "Fr: 12:00 – 00:00 · Sa: 14:00 – 01:00", "So: 13:00 – 22:00"] },
         { label: "Telefon", lines: ["+48 800 931 311"] },
       ],
@@ -537,7 +537,7 @@ export const translations = {
       links: [["Über uns", "#about"], ["Speisekarte", "#menu"], ["Galerie", "#gallery"], ["Angebote", "#offers"], ["Reservierung", "#reservation"], ["Lage", "#location"]] as [string, string][],
       contactHeading: "Kontakt",
       copyright: "© 2025 EmberCut Restaurant. Alle Rechte vorbehalten.",
-      location: "ul. Krzywa 17 · Krakau · Polen",
+      location: "ul. Krzyża 17 · Krakau · Polen",
     },
     datepicker: {
       months: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
