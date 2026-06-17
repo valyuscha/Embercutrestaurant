@@ -4,6 +4,7 @@ import { Footer } from "./components/Footer";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { ThemeProvider, useTheme } from "./ThemeContext";
 import { LanguageProvider } from "./context/LanguageContext";
+import LinkedInWatermark from "./components/LinkedInWatermark";
 
 function LayoutInner() {
   const { theme, setTheme } = useTheme();
@@ -47,6 +48,7 @@ function LayoutInner() {
       <Outlet />
       <Footer />
       <ThemeToggle theme={theme} onChange={setTheme} />
+      <LinkedInWatermark />
     </>
   );
 }
