@@ -4,10 +4,16 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "dev": "vite"
+    "dev": "cd frontend && npm start",
+    "build": "cd frontend && npm install --legacy-peer-deps && CI=false npm run build",
+    "start": "npx serve -s frontend/dist -l ${PORT:-3000}",
+    "install:frontend": "cd frontend && npm install --legacy-peer-deps"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "dependencies": {
+    "serve": "^14.2.0",
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
